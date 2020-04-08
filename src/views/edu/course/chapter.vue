@@ -60,7 +60,13 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="上传视频">
-          <!-- TODO -->
+          <el-upload
+            class="upload-v"
+            action="http://localhost:8002/video/upload"
+            :on-success="handleVodUploadSuccess"
+          >
+            <el-button size="small" type="primary">点击上传</el-button>
+          </el-upload>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -193,6 +199,10 @@ export default {
       } else {
         this.videoInfo(data.id);
       }
+    },
+    handleVodUploadSuccess(response, file) {
+      this.video.videoSourceId = response.data;
+      this.video.videoOriginalName = file.name;
     }
   }
 };

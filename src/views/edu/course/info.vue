@@ -16,36 +16,19 @@
       <!-- 所属分类 -->
       <el-form-item label="课程分类">
         <div class="block">
-          <el-cascader
-            placeholder="试试搜索：JS"
-            v-model="subject"
-            :options="subjectTree"
-            :props="{label: 'title', value: 'id'}"
-            @change="changeSubject"
-            filterable
-          ></el-cascader>
+          <el-cascader placeholder="试试搜索：JS" v-model="subject" :options="subjectTree" :props="{label: 'title', value: 'id'}" @change="changeSubject" filterable></el-cascader>
         </div>
       </el-form-item>
 
       <!-- 课程讲师 -->
       <el-form-item label="课程讲师">
         <el-select v-model="courseInfo.teacherId" placeholder="请选择">
-          <el-option
-            v-for="teacher in teacherList"
-            :key="teacher.id"
-            :label="teacher.name"
-            :value="teacher.id"
-          />
+          <el-option v-for="teacher in teacherList" :key="teacher.id" :label="teacher.name" :value="teacher.id" />
         </el-select>
       </el-form-item>
 
       <el-form-item label="总课时">
-        <el-input-number
-          :min="0"
-          v-model="courseInfo.lessonNum"
-          controls-position="right"
-          placeholder="请填写课程的总课时数"
-        />
+        <el-input-number :min="0" v-model="courseInfo.lessonNum" controls-position="right" placeholder="请填写课程的总课时数" />
       </el-form-item>
 
       <!-- 课程简介-->
@@ -56,24 +39,14 @@
       <!-- 课程封面 TODO -->
       <!-- 课程封面-->
       <el-form-item label="课程封面">
-        <el-upload
-          :show-file-list="false"
-          :on-success="handleAvatarSuccess"
-          :before-upload="beforeAvatarUpload"
-          action="https://imgkr.com/api/files/upload"
-          class="avatar-uploader"
-        >
+        <el-upload :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload" action="https://imgkr.com/api/files/upload"
+          class="avatar-uploader">
           <img :src="courseInfo.cover" />
         </el-upload>
       </el-form-item>
 
       <el-form-item label="课程价格">
-        <el-input-number
-          :min="0"
-          v-model="courseInfo.price"
-          controls-position="right"
-          placeholder="免费课程请设置为0元"
-        />元
+        <el-input-number :min="0" v-model="courseInfo.price" controls-position="right" placeholder="免费课程请设置为0元" />元
       </el-form-item>
 
       <el-form-item>

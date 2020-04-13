@@ -8,24 +8,14 @@
       <el-step title="最终发布" />
     </el-steps>
 
-    <el-tree
-      :data="chapterVideo"
-      :props="{label: 'title', value: 'id'}"
-      default-expand-all
-      :expand-on-click-node="false"
-    >
+    <el-tree :data="chapterVideo" :props="{label: 'title', value: 'id'}" default-expand-all :expand-on-click-node="false">
       <span class="custom-tree-node" slot-scope="{ node, data }">
         <span>{{ node.label }}</span>
         <span>
           <el-button type="text" size="mini" @click="() => modify(node,data)">modify</el-button>
           <el-button type="text" size="mini" @click="() => remove(node,data)">delete</el-button>
           <!-- 只有在第一级才会展示添加下级标签 -->
-          <el-button
-            v-if="node.level === 1"
-            type="text"
-            size="mini"
-            @click="() => append(node,data)"
-          >append</el-button>
+          <el-button v-if="node.level === 1" type="text" size="mini" @click="() => append(node,data)">append</el-button>
         </span>
       </span>
     </el-tree>
@@ -60,11 +50,7 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="上传视频">
-          <el-upload
-            class="upload-v"
-            action="http://localhost:8002/vod/video/upload"
-            :on-success="handleVodUploadSuccess"
-          >
+          <el-upload class="upload-v" action="http://localhost:8002/vod/video/upload" :on-success="handleVodUploadSuccess">
             <el-button size="small" type="primary">点击上传</el-button>
           </el-upload>
         </el-form-item>

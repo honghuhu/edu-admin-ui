@@ -6,12 +6,7 @@
       </el-form-item>
       <el-form-item label="课程状态">
         <el-select v-model="listQuery.status" placeholder="课程状态">
-          <el-option
-            v-for="(item, index) in statusOptions"
-            :label="item.label"
-            :key="index"
-            :value="item.value"
-          ></el-option>
+          <el-option v-for="(item, index) in statusOptions" :label="item.label" :key="index" :value="item.value"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item>
@@ -21,21 +16,12 @@
         <el-button @click="listQuery = {}; date=[]; fetchData()">清空</el-button>
       </el-form-item>
     </el-form>
-    <el-table
-      v-loading="listLoading"
-      :data="data.records"
-      element-loading-text="Loading"
-      border
-      fit
-      highlight-current-row
-    >
+    <el-table v-loading="listLoading" :data="data.records" element-loading-text="Loading" border fit highlight-current-row>
       <el-table-column prop="id" label="课程主键" width="120" align="center" />
       <el-table-column prop="title" label="课程标题" width="120" align="center" />
       <el-table-column label="课程状态" width="150" align="center">
         <template slot-scope="scope">
-          <el-tag
-            :type="scope.row.status | statusFilter(statusOptions)"
-          >{{ scope.row.status | statusFilter(statusOptions)}}</el-tag>
+          <el-tag :type="scope.row.status | statusFilter(statusOptions)">{{ scope.row.status | statusFilter(statusOptions)}}</el-tag>
         </template>
       </el-table-column>
       <el-table-column align="center" prop="gmtCreate" label="创建时间" width="200">
@@ -46,33 +32,21 @@
       </el-table-column>
       <el-table-column align="center">
         <template slot-scope="scope">
-            <!-- 调整课程编辑页面 -->
-          <el-button
-            type="primary"
-            icon="el-icon-edit"
-            circle
-            @click="$router.push({ path: `/course/info/${scope.row.id}` })"
-          >编 辑</el-button>
+          <!-- 调整课程编辑页面 -->
+          <el-button type="primary" icon="el-icon-edit" circle @click="$router.push({ path: `/course/info/${scope.row.id}` })">编 辑</el-button>
           <el-button type="danger" icon="el-icon-delete" circle @click="deleteById(scope.row.id)"></el-button>
         </template>
       </el-table-column>
     </el-table>
     <div class="block">
-      <el-pagination
-        align="center"
-        layout="total, prev, pager, next"
-        :current-page="data.current"
-        :page-size="data.size"
-        :total="data.total"
-        @current-change="fetchData"
-      ></el-pagination>
+      <el-pagination align="center" layout="total, prev, pager, next" :current-page="data.current" :page-size="data.size" :total="data.total" @current-change="fetchData">
+      </el-pagination>
     </div>
   </div>
 </template>
 
 <script>
 import course from "@/api/edu/course";
-
 export default {
   filters: {
     statusFilter(value, statusOptions) {
@@ -88,17 +62,17 @@ export default {
       listLoading: true,
       listQuery: {},
       statusOptions: [
-         {
-          value: '',
-          label: '全部'
+        {
+          value: "",
+          label: "全部"
         },
         {
-          value: 'Draft',
-          label: '未发布'
+          value: "Draft",
+          label: "未发布"
         },
         {
-          value: 'Normal',
-          label: '已发布'
+          value: "Normal",
+          label: "已发布"
         }
       ],
       date: ""

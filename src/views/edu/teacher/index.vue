@@ -6,25 +6,13 @@
       </el-form-item>
       <el-form-item label="讲师级别">
         <el-select v-model="listQuery.level" placeholder="讲师级别">
-          <el-option
-            v-for="(item, index) in levelOptions"
-            :label="item.label"
-            :key="index"
-            :value="item.value"
-          ></el-option>
+          <el-option v-for="(item, index) in levelOptions" :label="item.label" :key="index" :value="item.value"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="创建日期">
         <div class="block">
-          <el-date-picker
-            v-model="date"
-            type="daterange"
-            range-separator="至"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
-            value-format="yyyy-MM-dd hh:mm:ss"
-            @change="changeDate"
-          ></el-date-picker>
+          <el-date-picker v-model="date" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" value-format="yyyy-MM-dd hh:mm:ss"
+            @change="changeDate"></el-date-picker>
         </div>
       </el-form-item>
       <el-form-item>
@@ -34,14 +22,7 @@
         <el-button @click="listQuery = {}; date=[]; fetchData()">清空</el-button>
       </el-form-item>
     </el-form>
-    <el-table
-      v-loading="listLoading"
-      :data="data.records"
-      element-loading-text="Loading"
-      border
-      fit
-      highlight-current-row
-    >
+    <el-table v-loading="listLoading" :data="data.records" element-loading-text="Loading" border fit highlight-current-row>
       <el-table-column prop="id" label="讲师主键" width="120" align="center" />
       <!-- <el-table-column prop="avatar" label="讲师头像" width="120" align="center">
         <template slot-scope="scope">
@@ -53,9 +34,7 @@
       <el-table-column prop="intro" label="讲师简介" width="500" align="center" />
       <el-table-column label="讲师等级" width="150" align="center">
         <template slot-scope="scope">
-          <el-tag
-            :type="scope.row.level | levelFilter(levelOptions)"
-          >{{ scope.row.level | levelFilter(levelOptions)}}</el-tag>
+          <el-tag :type="scope.row.level | levelFilter(levelOptions)">{{ scope.row.level | levelFilter(levelOptions)}}</el-tag>
           <!-- <el-tag>{{ scope.row.level === 1 ? "高级讲师" : "首席讲师"}}</el-tag> -->
         </template>
       </el-table-column>
@@ -67,36 +46,19 @@
       </el-table-column>
       <el-table-column align="center">
         <template slot-scope="scope">
-          <el-button
-            type="primary"
-            icon="el-icon-edit"
-            circle
-            @click="updateDialogVisible = true, updateBtnDisabled = false, ruleForm = { ...scope.row }"
-          >编 辑</el-button>
+          <el-button type="primary" icon="el-icon-edit" circle @click="updateDialogVisible = true, updateBtnDisabled = false, ruleForm = { ...scope.row }">编 辑</el-button>
           <el-button type="danger" icon="el-icon-delete" circle @click="deleteById(scope.row.id)"></el-button>
         </template>
       </el-table-column>
     </el-table>
     <div class="block">
-      <el-pagination
-        align="right"
-        layout="total, prev, pager, next"
-        :current-page="data.current"
-        :page-size="data.size"
-        :total="data.total"
-        @current-change="fetchData"
-      ></el-pagination>
+      <el-pagination align="right" layout="total, prev, pager, next" :current-page="data.current" :page-size="data.size" :total="data.total" @current-change="fetchData">
+      </el-pagination>
     </div>
 
     <!-- 更新框 -->
     <el-dialog title="修改讲师" :visible.sync="updateDialogVisible" width="30%" center>
-      <el-form
-        :model="ruleForm"
-        :rules="rules"
-        ref="ruleForm"
-        label-width="100px"
-        class="demo-ruleForm"
-      >
+      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
         <el-form-item label="讲师名称" prop="name">
           <el-input v-model="ruleForm.name"></el-input>
         </el-form-item>
@@ -108,12 +70,7 @@
         </el-form-item>
         <el-form-item label="讲师等级">
           <el-select v-model="ruleForm.level" placeholder="请选择讲师级别">
-            <el-option
-              v-for="(item, index) in levelOptions"
-              :label="item.label"
-              :key="index"
-              :value="item.value"
-            ></el-option>
+            <el-option v-for="(item, index) in levelOptions" :label="item.label" :key="index" :value="item.value"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item>

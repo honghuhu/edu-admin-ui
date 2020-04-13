@@ -1,19 +1,8 @@
 <template>
   <div class="dashboard-container">
-    <el-form
-      :model="ruleForm"
-      :rules="rules"
-      ref="ruleForm"
-      label-width="100px"
-      class="demo-ruleForm"
-    >
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
       <el-form-item prop="avatar">
-        <el-upload
-          class="avatar-uploader"
-          action="https://imgkr.com/api/files/upload"
-          :on-success="handleAvatarSuccess"
-          :show-file-list="false"
-        >
+        <el-upload class="avatar-uploader" action="https://imgkr.com/api/files/upload" :on-success="handleAvatarSuccess" :show-file-list="false">
           <img v-if="ruleForm.avatar" :src="ruleForm.avatar" class="avatar" />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
@@ -29,12 +18,7 @@
       </el-form-item>
       <el-form-item label="讲师等级">
         <el-select v-model="ruleForm.level" placeholder="请选择讲师级别">
-          <el-option
-            v-for="(item, index) in levelOptions"
-            :label="item.label"
-            :key="index"
-            :value="item.value"
-          ></el-option>
+          <el-option v-for="(item, index) in levelOptions" :label="item.label" :key="index" :value="item.value"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item>

@@ -62,7 +62,7 @@
         <el-form-item label="上传视频">
           <el-upload
             class="upload-v"
-            action="http://localhost:8002/video/upload"
+            action="http://localhost:8002/vod/video/upload"
             :on-success="handleVodUploadSuccess"
           >
             <el-button size="small" type="primary">点击上传</el-button>

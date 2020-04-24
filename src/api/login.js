@@ -1,8 +1,12 @@
 import request from '@/utils/request'
 
+const api_name = '/acl/index'
+
+// 登录
 export function login(username, password) {
+  // debugger
   return request({
-    url: '/lecturer/user/login',
+    url: `${api_name}/login`,
     method: 'post',
     data: {
       username,
@@ -11,17 +15,28 @@ export function login(username, password) {
   })
 }
 
+// 获取用户信息
 export function getInfo(token) {
   return request({
-    url: '/lecturer/user/info',
+    url: `${api_name}/info`,
     method: 'get',
     params: { token }
   })
 }
 
+// 登出
 export function logout() {
+  //debugger
   return request({
-    url: '/lecturer/user/logout',
+    url: `${api_name}/logout`,
     method: 'post'
+  })
+}
+
+// 获取菜单权限数据
+export function getMenu() {
+  return request({
+    url: `${api_name}/menu`,
+    method: 'get'
   })
 }

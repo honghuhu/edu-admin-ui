@@ -11,7 +11,7 @@ export default {
         return request({
             url: '/lecturer/chapter/saveOrUpdate',
             method: 'post',
-            data: data
+            data
         })
     },
     remove(id) {

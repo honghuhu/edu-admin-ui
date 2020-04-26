@@ -1,18 +1,18 @@
 import request from '@/utils/request'
 
 export default {
-    save(params) {
+    save(data) {
         return request({
             url: '/lecturer/course/save',
             method: 'post',
-            data: params
+            data
         })
     },
-    update(params) {
+    update(data) {
         return request({
-            url: `/lecturer/course/modify/${params.id}`,
+            url: `/lecturer/course/modify/${data.id}`,
             method: 'post',
-            data: params
+            data
         })
     },
     findById(id) {
@@ -37,7 +37,7 @@ export default {
         return request({
             url: `/lecturer/course/page`,
             method: 'post',
-            data: data
+            data
         })
     },
     delete(id) {

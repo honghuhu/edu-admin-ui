@@ -5,7 +5,7 @@ export default {
         return request({
             url: '/lecturer/video/saveOrUpdate',
             method: 'post',
-            data: data
+            data
         })
     },
     remove(id) {

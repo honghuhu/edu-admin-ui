@@ -1,11 +1,11 @@
 import request from '@/utils/request'
 
 export default {
-    page(params) {
+    page(data) {
         return request({
             url: '/lecturer/teacher/page',
             method: 'post',
-            data: params
+            data
         })
     },
     all() {
@@ -14,11 +14,11 @@ export default {
             method: 'get'
         })
     },
-    save(params) {
+    save(data) {
         return request({
             url: '/lecturer/teacher/save',
             method: 'post',
-            data: params
+            data
         })
     },
     delete(id) {
@@ -27,11 +27,11 @@ export default {
             method: 'delete'
         })
     },
-    update(params){
+    update(data) {
         return request({
-            url: `/lecturer/teacher/modify/${params.id}`,
+            url: `/lecturer/teacher/modify/${data.id}`,
             method: 'post',
-            data: params
+            data
         })
     }
 }
